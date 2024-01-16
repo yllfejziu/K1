@@ -1,5 +1,7 @@
 import Foundation
+#if canImport(secp256k1)
 import secp256k1
+#endif
 
 // MARK: - FFI.ECDH
 extension FFI {
@@ -31,11 +33,7 @@ extension FFI.ECDH {
 		case noHashWholePoint
 
 		func hashfp() -> (Optional< @convention(c) (UnsafeMutablePointer<UInt8>?, UnsafePointer<UInt8>?, UnsafePointer<UInt8>?, UnsafeMutableRawPointer?) -> Int32>) {
-			switch self {
-			case .libsecp256kDefault: return secp256k1_ecdh_hash_function_default
-			case .ansiX963: return ecdh_asn1_x963
-			case .noHashWholePoint: return ecdh_unsafe_whole_point
-			}
+      secp256k1_ecdh_hash_function_default
 		}
 
 		var outputByteCount: Int {

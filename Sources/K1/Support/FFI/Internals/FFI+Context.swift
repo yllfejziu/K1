@@ -1,5 +1,7 @@
 // FFI to C
+#if canImport(secp256k1)
 import secp256k1
+#endif
 
 // MARK: - FFI.Context
 extension FFI {
