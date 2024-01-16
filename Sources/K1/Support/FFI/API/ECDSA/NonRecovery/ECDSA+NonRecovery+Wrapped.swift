@@ -1,5 +1,7 @@
 import Foundation
+#if canImport(secp256k1)
 import secp256k1
+#endif
 
 // MARK: - FFI.ECDSA.Wrapped
 extension FFI.ECDSA {
